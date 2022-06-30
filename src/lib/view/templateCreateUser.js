@@ -1,5 +1,5 @@
 import { signup } from '../../firebase/auth.js';
-import { doc, setDoc } from '../../firebase/init.js'
+import { doc, setDoc } from '../../firebase/init.js';
 
 export const createUser = () => {
     const divCreateUser = document.createElement('div')
@@ -10,7 +10,7 @@ export const createUser = () => {
         </div>
         <div id="userCreationContainer">
             <p class="instruction">Ingresa tus datos personales</p>
-            <form>
+            <form action="FIREBASE??">
                 <div id="input-container">
                     <input type="text" name="userName" id="userName_id" placeholder="Nombre personal o de tu marca">
                     <input type="date" name="userDateOfBirth" id="dateOfBirth" placeholder="Fecha de nacimiento">
@@ -20,17 +20,17 @@ export const createUser = () => {
             </form>
             <p class="instruction">Quieres ingresar como:</p>
             <div class="radioButtons">
-            <div class="radioButtonContainer">
-                <img src="img/Baker.png" width=80px>
-                <input type="radio" id="bakerOption_id" name="userType" value="baker" class='a' checked>
+                <div class="radioButtonContainer">
+                    <img src="img/Baker.png" width=80px>
+                    <input type="radio" id="bakerOption_id" name="userType" value="baker" checked>
+                </div>
+
+                <div class="radioButtonContainer">
+                <img src="img/eater.png" width=80px>
+                    <input type="radio" id="eaterOption_id" name="userType" value="eater">
+                </div>
             </div>
-            <div class="radioButtonContainer">
-            <img src="img/eater.png" width=80px>
-                <input type="radio" id="eaterOption_id" name="userType" value="eater" class='a'>
-            </div>
-        </div>
-            <div class="divButtons">
-                <button class="buttons" id="newUser">Crear usuario</button>
+            <button class="buttons" id="newUser">Crear usuario</button>
             </div>
         </div>
         `
@@ -41,11 +41,13 @@ export const createUser = () => {
             const email = divCreateUser.querySelector("#userMail_id").value;
             const password = divCreateUser.querySelector("#userPassword_id").value;
             const birthday = divCreateUser.querySelector("#dateOfBirth").value
-            // const userType = divCreateUser.querySelector('input[name="userType"]:checked').value;
-            const userType = divCreateUser.querySelector('.a:checked').value;
-            console.log(userType);
+            const userType = divCreateUser.querySelector('input[name="userType"]:checked').value;
+
             const data = {username, email, password, birthday, userType}
             signup(data);
         })
+        
+
     return divCreateUser;
 };
+

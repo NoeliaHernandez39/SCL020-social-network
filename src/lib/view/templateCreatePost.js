@@ -1,8 +1,9 @@
-import { createPost, } from "../../firebase/posts.js";
+import { createPost } from "../../firebase/post.js";
 
 export const newPost = () => {
     const divNewPost = document.createElement('div')
     divNewPost.setAttribute('id', 'containerNewPost')
+    
     const viewNewPost = `
     <div class="menu__side" id="menu_side">
     <div id="containImg">
@@ -37,13 +38,13 @@ export const newPost = () => {
 </div>
 <div class="postMain">
     <div class="userHeader">
-        <div class="userIcon">
+        <div class="item1">
             <i class="fa-solid fa-circle-user fa-6x"></i>
         </div>
-        <div class="userName" id="nameHeader">
-            <p>Nombre de usuario</p>
+        <div class="item2" id="nameHeader">
+            <h2>Nombre de usuario</h2>
         </div>
-        <div class="userTitle" id="titleHeader">
+        <div class="item3" id="titleHeader">
             <h3>Titulo baker o eater</h3>
         </div>
     </div>
@@ -53,55 +54,57 @@ export const newPost = () => {
     </div>
     <div class="postBody">
         <div class="userNav">
-            <div class="userIcon">
+            <div class="item1">
                 <i class="fa-solid fa-circle-user fa-3x"></i>
             </div>
-            <div class="userName">
+            <div class="item2">
                 <p>Nombre de usuario</p>
             </div>
-            <div class="userTitle">
+            <div class="item3">
                 <p>Baker</p>
             </div>
         </div>
-            <div class="post">
-                <input class="post__textarea" name="createPostInput"  id="createPostTextarea" placeholder="Escribe un texto"></input>
-                <div class="radioButtons">
-                    <div class="radioButtonContainer">
-                        <input type="radio" id="veganOptionId" name="postType" value="vegan" class='titleOption' checked>
-                        <label for="veganOptionId">Vegan</label>
-                    </div>
-                    <div class="radioButtonContainer">
-                        <input type="radio" id="fullOptionId" name="postType" value="full" class='titleOption'>
-                        <label for="fullOptionId">Full</label>
-                    </div>
-            </div>
-            </div>
-            <div class= "optionsPost">
-                <div class="divOptionsBt">
-                    <a href="#/userProfile" class="buttons" id="login">Publicar</a>
+        <div class="post">
+
+            <input class="post__textarea" name="createPostInput"  id="createPostTextarea" placeholder="Escribe un texto"></input>
+
+            <div class="radioButtons">
+                <div class="radioButtonContainer">
+                    <input type="radio" id="veganOptionId" name="postType" value="vegan" checked>
+                    <label for="veganOptionId">Vegan</label>
+                </div>
+
+                <div class="radioButtonContainer">
+                    <input type="radio" id="fullOptionId" name="postType" value="full">
+                    <label for="fullOptionId">Full</label>
                 </div>
             </div>
-        
+        </div>
+        <div class="optionsPost">
+            <div class="divOptionsBt">
+                <button class="buttons" id="createPost">Publicar</button>
+            </div>
+        </div>
+    </div>
 </div>
 `
-
 divNewPost.innerHTML = viewNewPost;
-const postEvent = divNewPost.querySelector('#login')
-postEvent.addEventListener('click', () => {
-    const postValue= divNewPost.querySelector('#createPostTextarea').value
-    //const titleValue= divNewPost.querySelector('#b').checked.value 
-    const titleValue = divNewPost.querySelector('input[name="postType"]:checked').value;
-//     const postType = divNewPost.querySelector('.b:checked').value;
-    console.log(postValue, titleValue)
-    const dataPost = {
-            text: postValue,
-            postType: titleValue
-            }
-            createPost(dataPost)
-    //createPost(postValue.value, titleValue.value)
-})
-return divNewPost;
 
+const createPostButton = divNewPost.querySelector('#createPost')
+const textarea = divNewPost.querySelector('#createPostTextarea')
+
+createPostButton.addEventListener('click', () => {
+    const postType = divNewPost.querySelector('input[name="postType"]:checked').value;
+
+    const dataPost = {
+        text: textarea.value,
+        postType: postType
+    }
+
+    createPost(dataPost)
+})
+
+return divNewPost;
 };
 
 

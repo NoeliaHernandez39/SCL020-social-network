@@ -1,10 +1,11 @@
-import { logout } from "../../firebase/auth.js";
-import { getPost, onGetPost } from "../../firebase/posts.js";
+import { logout } from '../../firebase/auth.js';
+import { getAllPosts } from '../../firebase/post.js';
+import { getUserData, getUserPostData } from '../../firebase/users.js';
 
 export const home = () => {
-    const divHome = document.createElement('div')
-    divHome.setAttribute('id', 'divContainerHome')
-    const viewHome = `
+  const divHome = document.createElement('div');
+  divHome.setAttribute('id', 'divContainerHome');
+  const viewHome = `
     <div class="menu__side" id="menu_side">
         <div id="containImg">
             <img src="img/logo2.png" id="logo2">
@@ -36,14 +37,55 @@ export const home = () => {
             </a>
         </div>
     </div>
-    <div class="postContainer">
-    </div>
-`
+    <div class="postMain">
 
-divHome.innerHTML = viewHome;
-const btn = divHome.querySelector("#logoutButton")
-btn.addEventListener("click", () => {
+    </div>
+</div>
+`;
+  divHome.innerHTML = viewHome;
+  const btn = divHome.querySelector('#logoutButton');
+  const postMain = divHome.querySelector('.postMain');
+
+    //   OBTENER TODOS LOS POSTA
+  getAllPosts()
+    .then((postsList) => {
+      postsList.forEach((post) => {
+        getUserPostData(post.idUser)
+          .then((user) => {
+            const postElement = document.createElement('div');
+            postElement.setAttribute('class', 'postBody');
+
+            postElement.innerHTML = `
+                            <div class="userNav">
+                                <div class="item1">
+                                    <i class="fa-solid fa-circle-user fa-3x"></i>
+                                </div>
+                                <div class="item2">
+                                    <p>${!user?.username ? 'Invitado' : user.username}</p>
+                                </div>
+                                <div class="item3">
+                                    <p>${!user?.userType ? 'Invitado' : user.userType}</p>
+                                </div>
+                            </div>
+
+                            <div class="post">
+                                <h2>${post.text}</h2> 
+                            </div>
+                            <div class="like">
+                                <div>
+                                    <img src="img/cuplike.png" class ="cupcakeImg" alt="cuplike">
+                                </div>
+                            </div>
+                        `;
+
+            postMain.appendChild(postElement);
+          });
+      });
+    });
+
+    // ASOCIAMOS EL BOTON DE CERRAR SESION CON LA FUNCION DE LOGOUT
+  btn.addEventListener('click', () => {
     logout();
-})
-return divHome;
+  });
+  return divHome;
 };

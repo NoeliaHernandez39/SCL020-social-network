@@ -55,6 +55,28 @@ body{
     margin: 0px 20px 0px 20px;
 }
 
+#eaterOption_id, #bakerOption_id{
+width: 60px;    
+}
+
+.a{
+    width: 20px;
+    height: 20px;  
+}
+
+
+.radioButtonContainer{
+    display: flex;
+    align-items: center; 
+}
+
+.radioButtons{
+    display: flex;
+    height: auto;
+    justify-content: center;
+   
+}
+
 .buttons{
     border-radius: 10px;
     border: solid #A4455E;
@@ -491,7 +513,7 @@ input{
         align-items: center;
         gap: 20px;
         margin-top: 40px;
-        }
+    }
     .cupcakeImg{
         width: auto;
         height: 40px;
@@ -501,6 +523,6 @@ post__textarea{
     width: 20px;
 }
 .titleOption {
-    width: 5px;
-
+    width: 15px;
+    height: 15px;
 }
