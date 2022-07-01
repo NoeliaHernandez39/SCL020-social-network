@@ -3,9 +3,9 @@ import { getAllPosts } from '../../firebase/post.js';
 import { getUserData, getUserPostData } from '../../firebase/users.js';
 
 export const home = () => {
-  const divHome = document.createElement('div');
-  divHome.setAttribute('id', 'divContainerHome');
-  const viewHome = `
+    const divHome = document.createElement('div');
+    divHome.setAttribute('id', 'divContainerHome');
+    const viewHome = `
     <div class="menu__side" id="menu_side">
         <div id="containImg">
             <img src="img/logo2.png" id="logo2">
@@ -42,18 +42,17 @@ export const home = () => {
     </div>
 </div>
 `;
-  divHome.innerHTML = viewHome;
-  const btn = divHome.querySelector('#logoutButton');
-  const postMain = divHome.querySelector('.postMain');
+divHome.innerHTML = viewHome;
+const btn = divHome.querySelector('#logoutButton');
+const postMain = divHome.querySelector('.postMain');
 
-    //   OBTENER TODOS LOS POSTA
-  getAllPosts()
+getAllPosts()
     .then((postsList) => {
-      postsList.forEach((post) => {
-        getUserPostData(post.idUser)
-          .then((user) => {
-            const postElement = document.createElement('div');
-            postElement.setAttribute('class', 'postBody');
+        postsList.forEach((post) => {
+            getUserPostData(post.idUser)
+        .then((user) => {const postElement = document.createElement('div'); 
+        console.log(postsList)
+            postElement.setAttribute('class', 'postBody') 
 
             postElement.innerHTML = `
                             <div class="userNav">
@@ -61,15 +60,15 @@ export const home = () => {
                                     <i class="fa-solid fa-circle-user fa-3x"></i>
                                 </div>
                                 <div class="item2">
-                                    <p>${!user?.username ? 'Invitado' : user.username}</p>
+                                    <p>${user.username}</p>
                                 </div>
                                 <div class="item3">
-                                    <p>${!user?.userType ? 'Invitado' : user.userType}</p>
+                                    <p>${user.userType}</p>
                                 </div>
                             </div>
 
                             <div class="post">
-                                <h2>${post.text}</h2> 
+                                <h2>${post?.text}</h2> 
                             </div>
                             <div class="like">
                                 <div>
@@ -79,13 +78,13 @@ export const home = () => {
                         `;
 
             postMain.appendChild(postElement);
-          });
-      });
+        });
     });
+});
 
     // ASOCIAMOS EL BOTON DE CERRAR SESION CON LA FUNCION DE LOGOUT
-  btn.addEventListener('click', () => {
+btn.addEventListener('click', () => {
     logout();
-  });
-  return divHome;
+});
+return divHome;
 };
