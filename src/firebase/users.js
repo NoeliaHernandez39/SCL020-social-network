@@ -1,18 +1,18 @@
 import {
-    db, doc, auth, getDoc,
+    db, doc, /*auth,*/ getDoc,
   } from './init.js';
   
-  const getUserData = async () => {
-    try {
-      const user = auth.currentUser;
-      const getUserDataDoc = doc(db, 'users', user.uid);
-      const userDocSnapshot = await getDoc(getUserDataDoc);
-  console.log (getUserDataDoc)
-      return userDocSnapshot.data();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getUserData = async () => {
+  //   try {
+  //     const user = auth.currentUser;
+  //     const getUserDataDoc = doc(db, 'users', user.uid);
+  //     const userDocSnapshot = await getDoc(getUserDataDoc);
+  // console.log (getUserDataDoc)
+  //     return userDocSnapshot.data();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   
   const getUserPostData = async (uid) => {
     try {
@@ -25,4 +25,4 @@ import {
     }
   };
   
-  export { getUserData, getUserPostData };
+  export { getUserPostData };

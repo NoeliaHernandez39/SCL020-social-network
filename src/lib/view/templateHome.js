@@ -1,6 +1,6 @@
 import { logout } from '../../firebase/auth.js';
 import { getAllPosts } from '../../firebase/post.js';
-import { getUserData, getUserPostData } from '../../firebase/users.js';
+import { getUserPostData } from '../../firebase/users.js';
 
 export const home = () => {
     const divHome = document.createElement('div');
@@ -51,7 +51,6 @@ getAllPosts()
         postsList.forEach((post) => {
             getUserPostData(post.idUser)
         .then((user) => {const postElement = document.createElement('div'); 
-        console.log(postsList)
             postElement.setAttribute('class', 'postBody') 
 
             postElement.innerHTML = `

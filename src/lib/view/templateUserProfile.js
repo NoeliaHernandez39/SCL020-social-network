@@ -1,5 +1,6 @@
 import { logout } from '../../firebase/auth.js';
 import { getCurrentUserPosts } from '../../firebase/post.js';
+import { getUserPostData } from '../../firebase/users.js';
 
 export const userProfile = () => {
   const divUserProfile = document.createElement('div');
@@ -65,11 +66,9 @@ export const userProfile = () => {
  
   getCurrentUserPosts()
     .then((postsResponse) => {
-    //   postBody.removeChild(loadingHTML);
-
-      postsResponse.forEach((post) => {
-        const userData = JSON.parse(localStorage.getItem('userData'));
-
+        postsResponse.forEach((post) => {
+            getUserPostData(post.idUser)
+                .then((idUser) => {
         const postHTML = document.createElement('div');
         postHTML.innerHTML = `        
                     <div class="userNav">
@@ -78,11 +77,11 @@ export const userProfile = () => {
                         </div>
                     
                         <div class="item2">
-                            <p>${userData.username}</p>
+                            <p>${idUser.username}</p>
                         </div>
                     
                         <div class="item3">
-                            <p>${userData.userType}</p>
+                            <p>${idUser.userType}</p>
                         </div>
                     </div>
                     
@@ -99,7 +98,8 @@ export const userProfile = () => {
                     </div>`;
 
         postBody.appendChild(postHTML);
-      });
+        });
+     });
     });
 
 
