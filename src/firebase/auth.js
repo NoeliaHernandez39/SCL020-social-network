@@ -86,9 +86,6 @@ const signup = async (data) => {
       alert ('La contraseña debe tener 6 o mas caracteres')
     } else if (error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).')
       alert ('Este correo ya tiene una cuenta asociada')
-    else if (data.username  == ''|| null || undefined){
-      alert ('Debes ingresar un nombre de usuario')
-    }
     throw error.message;
   } 
 };

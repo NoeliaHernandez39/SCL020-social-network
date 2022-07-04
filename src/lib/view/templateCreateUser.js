@@ -43,8 +43,18 @@ export const createUser = () => {
             userType
             const password = divCreateUser.querySelector("#userPassword_id").value;
             const birthday = divCreateUser.querySelector("#dateOfBirth").value
+
+            const userType = divCreateUser.querySelector('input[name="userType"]:checked').value;
+
             const data = {username, email, password, birthday, userType}
-            signup(data);
+            
+            if (username, birthday == '' || null || undefined){
+                alert('Debes llenar todos los campos');
+            } else {
+                signup(data)
+            }
+
+        
         })
         
 
