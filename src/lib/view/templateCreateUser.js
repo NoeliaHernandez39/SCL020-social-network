@@ -34,17 +34,16 @@ export const createUser = () => {
             </div>
         </div>
         `
-        const username = divCreateUser.querySelector("#userName_id").value;
-        const userType = divCreateUser.querySelector('input[name="userType"]:checked').value;
+        
+    
         divCreateUser.innerHTML = viewCreateUser;
         const btn = divCreateUser.querySelector("#newUser")
         btn.addEventListener("click", () => {
-            username
-            userType
+            const username = divCreateUser.querySelector("#userName_id").value;
             const password = divCreateUser.querySelector("#userPassword_id").value;
             const birthday = divCreateUser.querySelector("#dateOfBirth").value
-
             const userType = divCreateUser.querySelector('input[name="userType"]:checked').value;
+            const email = divCreateUser.querySelector("#userMail_id").value;
 
             const data = {username, email, password, birthday, userType}
             

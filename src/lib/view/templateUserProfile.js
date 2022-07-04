@@ -72,8 +72,8 @@ export const userProfile = () => {
     //     })
     // })
 
- 
-  getCurrentUserPosts()
+
+getCurrentUserPosts()
     .then((postsResponse) => {
         postsResponse.forEach((post) => {
             getUserPostData(post.idUser)
@@ -111,14 +111,14 @@ export const userProfile = () => {
 
         postBody.appendChild(postHTML);
         });
-     });
+    });
     });
 
 
-  btn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
     logout()
-  })
-  return divUserProfile;
+    })
+    return divUserProfile;
 };
 
 // ******************************

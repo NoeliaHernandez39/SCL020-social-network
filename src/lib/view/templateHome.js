@@ -48,9 +48,9 @@ const postMain = divHome.querySelector('.postMain');
 
 
 getAllPosts() //trae todo los post
-    .then((postsList) => {
-        postsList.forEach((posts) => { //trae todos los post filtrados
-            getUserPostData(posts.idUser)//uid especifico de cada post
+    .then((postList) => {
+        postList.forEach((post) => { //trae todos los post filtrados
+            getUserPostData(post.idUser)//uid especifico de cada post
         .then((users) => {
             const postElement = document.createElement('div'); 
             postElement.setAttribute('class', 'postBody') 
@@ -69,7 +69,7 @@ getAllPosts() //trae todo los post
                             </div>
 
                             <div class="post">
-                                <h2>${posts?.text}</h2> 
+                                <h2>${post?.text}</h2> 
                             </div>
                             <div class="like">
                                 <div>
