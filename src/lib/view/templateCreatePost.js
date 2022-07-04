@@ -78,7 +78,7 @@ export const newPost = () => {
         </div>
         <div class="optionsPost">
             <div class="divOptionsBt">
-                <a class="buttons" id="createPost" href="#/userProfile">Publicar</a>
+                <a class="buttons" id="createPost">Publicar</a>
             </div>
         </div>
     </div>
@@ -96,8 +96,13 @@ createPostButton.addEventListener('click', () => {
         text: textarea.value,
         postType: postType
     }
-
-    createPost(dataPost)
+    
+    if (textarea.value == '' || null || undefined){
+    alert ('Debes ingresar texto')
+    } else {
+        createPost(dataPost)
+        window.location = '#/userProfile'
+    }
 })
 
 return divNewPost;

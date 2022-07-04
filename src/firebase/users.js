@@ -1,6 +1,4 @@
-import {
-    db, doc, /*auth,*/ getDoc,
-  } from './init.js';
+import {db, doc, /*auth,*/ getDoc} from './init.js';
   
   // const getUserData = async () => {
   //   try {
@@ -18,8 +16,7 @@ import {
     try {
       const getUserDataDoc = doc(db, 'users', uid);
       const userDocSnapshot = await getDoc(getUserDataDoc);
-  
-      return userDocSnapshot.data();
+      return userDocSnapshot.data(); //data from firebase/collection/users/ANYid)
     } catch (err) {
       console.log(err);
     }
