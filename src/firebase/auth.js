@@ -34,7 +34,7 @@ const login = async (email, password) => {
     showTemplates('#/home')
     return userCredential;
   } catch (error) {
-    console.log(error.message)
+    alert('Correo invalido')
     throw error.message;
   }
 };
@@ -78,10 +78,16 @@ const signup = async (data) => {
     return userCredential;
   } catch (error) {
     if (error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
-      alert('Invalido')
+      alert('Correo invalido Ej: 1234@micorreo.com')
+    } else if (error == 'FirebaseError: Password should be at least 6 characters (auth/weak-password).'){
+      alert ('La contraseña debe tener 6 o mas caracteres')
+    } else if (error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).')
+      alert ('Este correo ya tiene una cuenta asociada')
+    else if (data.username  == ''|| null || undefined){
+      alert ('Debes ingresar un nombre de usuario')
     }
     throw error.message;
-  }
+  } 
 };
 
 
