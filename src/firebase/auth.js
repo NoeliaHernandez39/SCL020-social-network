@@ -34,6 +34,11 @@ const login = async (email, password) => {
     showTemplates('#/home')
     return userCredential;
   } catch (error) {
+    if (error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
+      alert ('Correo invalido')
+    } else if (error == 'FirebaseError: Firebase: Error (auth/wrong-password).'){
+      alert ('Contraseña invalida')
+    }
     console.log(error.message)
     throw error.message;
   }
