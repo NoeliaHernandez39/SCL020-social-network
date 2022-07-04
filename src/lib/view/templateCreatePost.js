@@ -48,10 +48,6 @@ export const newPost = () => {
             <h3>Titulo baker o eater</h3>
         </div>
     </div>
-    <div class="createPostFlex">
-        <p>Mis Publicaciones:</p>
-        <a href="#/createPost" class="buttonGreen">Crea un Post</a>
-    </div>
     <div class="postBody">
         <div class="userNav">
             <div class="item1">
@@ -65,7 +61,7 @@ export const newPost = () => {
             </div>
         </div>
         <div class="post">
-
+            
             <input class="post__textarea" name="createPostInput"  id="createPostTextarea" placeholder="Escribe un texto"></input>
 
             <div class="radioButtons">
@@ -82,7 +78,7 @@ export const newPost = () => {
         </div>
         <div class="optionsPost">
             <div class="divOptionsBt">
-                <button class="buttons" id="createPost">Publicar</button>
+                <a class="buttons" id="createPost" href="#/userProfile">Publicar</a>
             </div>
         </div>
     </div>

@@ -13,7 +13,6 @@ import {
   signInWithRedirect,
   signInWithPopup
 } from "./init.js";
-import { getUserData } from './users.js';
 
 
 // Iniciar Sesión
@@ -21,7 +20,7 @@ const login = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     // 
-    const userData = await getUserData(userCredential.user.uid)
+    // const userData = await getUserData(userCredential.user.uid)
     /* 
       {
         username: '',
@@ -29,7 +28,7 @@ const login = async (email, password) => {
         birthday: ''
       }
     */
-    localStorage.setItem('userData', JSON.stringify(userData))
+    // localStorage.setItem('userData', JSON.stringify(userData))
     alert('Sesión iniciada correctamente')
     showTemplates('#/home')
     return userCredential;
@@ -125,7 +124,7 @@ const googleLogin = () => {
 const logout = async () => {
   try {
     const response = await signOut(auth);
-    localStorage.removeItem('userData')
+    // localStorage.removeItem('userData')
     window.location = '#/'
     showTemplates('#/')
     alert('La sesión se cerró exitosamente')
