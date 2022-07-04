@@ -63,12 +63,22 @@ export const userProfile = () => {
   const btn = divUserProfile.querySelector('#logoutButton')
   const postBody = divUserProfile.querySelector('.postBody');
 
+    // getName()
+    // .then((names) => {
+    //     names(users.username)
+    //     console.log(users)
+    //     .then((username) => {
+    //         console.log(username)
+    //     })
+    // })
+
  
   getCurrentUserPosts()
     .then((postsResponse) => {
         postsResponse.forEach((post) => {
             getUserPostData(post.idUser)
-                .then((idUser) => {
+                .then((idUser) => { 
+        const date = new Date(Number(post.createdAt) * 1000).toLocaleDateString()
         const postHTML = document.createElement('div');
         postHTML.innerHTML = `        
                     <div class="userNav">
@@ -82,6 +92,8 @@ export const userProfile = () => {
                     
                         <div class="item3">
                             <p>${idUser.userType}</p>
+                            <p class="date">${date}</p>
+
                         </div>
                     </div>
                     

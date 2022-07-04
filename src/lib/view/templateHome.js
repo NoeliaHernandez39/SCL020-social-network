@@ -46,11 +46,13 @@ divHome.innerHTML = viewHome;
 const btn = divHome.querySelector('#logoutButton');
 const postMain = divHome.querySelector('.postMain');
 
-getAllPosts()
+
+getAllPosts() //trae todo los post
     .then((postsList) => {
-        postsList.forEach((post) => {
-            getUserPostData(post.idUser)
-        .then((user) => {const postElement = document.createElement('div'); 
+        postsList.forEach((posts) => { //trae todos los post filtrados
+            getUserPostData(posts.idUser)//uid especifico de cada post
+        .then((users) => {
+            const postElement = document.createElement('div'); 
             postElement.setAttribute('class', 'postBody') 
 
             postElement.innerHTML = `
@@ -59,15 +61,15 @@ getAllPosts()
                                     <i class="fa-solid fa-circle-user fa-3x"></i>
                                 </div>
                                 <div class="item2">
-                                    <p>${user.username}</p>
+                                    <p>${users.username}</p>
                                 </div>
                                 <div class="item3">
-                                    <p>${user.userType}</p>
+                                    <p>${users.userType}</p>
                                 </div>
                             </div>
 
                             <div class="post">
-                                <h2>${post?.text}</h2> 
+                                <h2>${posts?.text}</h2> 
                             </div>
                             <div class="like">
                                 <div>

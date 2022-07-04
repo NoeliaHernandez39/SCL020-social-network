@@ -1,61 +1,60 @@
 import { searchPost } from '../lib/view/templateSearch.js';
 import {
-    db, addDoc, collection, getDocs, query, where, auth,
+    db, addDoc, collection, getDocs, query, where, auth, orderBy
   } from './init.js';
   
+  //Llama array con todo los post
   const getAllPosts = async () => {
     try {
-      const postsArray = []; //array vacio donde quedaran los post 
-      const getAllPostsQuery = query(collection(db, 'posts'));//hace la consulta lee y ubica la coleccion "posts"
-      const allPostsSnapshot = await getDocs(getAllPostsQuery);// espera los datos 
-  
+      const postsArray = []; //array vacio donde quedaran los post.
+      const getAllPostsQuery = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));//consulta a db.
+      const allPostsSnapshot = await getDocs(getAllPostsQuery);// espera obtener los datos.
       allPostsSnapshot.forEach((doc) => {
-        postsArray.push(doc.data());//de donde viene data??
+        postsArray.push(doc.data());//.data(), toma data especifica de nuestra coleccion.
       });
-  
       return postsArray;
     } catch (err) {
       console.log(err);
     }
   };
+
+  // const getName = async () =>{
+  //   try {
+  //     const user = auth.currentUser.uid;
+  //     const getCurrentUserNameQuery = query(collection(db, 'users'), where('username', '==', user));
+  //     const nameSnapshot = await getDocs(getCurrentUserNameQuery);
+  //     return nameSnapshot.data()
+  //   } catch (error) {
+  //     console.log('error getUid')
+  //   }
+  // };
   
+  //Llama array de los posts del usuario actual
   const getCurrentUserPosts = async () => {
     try {
       const postsArray = [];
-      const user = auth.currentUser;//es una propiedad para obtener el usuario que accedio si no accede nadie es null
-      const getCurrentUserPostsQuery = query(collection(db, 'posts'), where('idUser', '==', user.uid));//metodo where recibe 3 parametros uno para filtrar uno para comparar y el valor
+      const user = auth.currentUser.uid;//propiedad para obtener el usuario que accedio si no accede nadie es null
+      const getCurrentUserPostsQuery = query(collection(db, 'posts'), where('idUser', '==', user), orderBy('createdAt', 'desc'));//metodo where recibe 3 parametros uno para filtrar uno para comparar y el valor
       const postsSnapshot = await getDocs(getCurrentUserPostsQuery);
       postsSnapshot.forEach((doc) => {
         postsArray.push(doc.data());//data adjunta el array que trae postsSnapshot
       });
-  
       return postsArray;
-      //console.log(postsArray)
     } catch (error) {
       console.log(error);
     }
   };
   
+  //Crea en la coleccion de la db
   const createPost = async (dataPost) => {
-    /*
-          {
-              text: 'jasjajdasdas',
-              postType: 'type',
-              (img: 'url')
-          }
-      */
-  
     try {
-      const user = auth.currentUser;
-  
-      await addDoc(collection(db, 'posts'),{ ...dataPost, idUser: user.uid },);
-  
-      console.log('todo salio super bien!');
+      const user = auth.currentUser.uid;
+      const secondsTimestamp = Math.floor(Date.now() / 1000)
+      await addDoc(collection(db, 'posts'), {idUser: user, createdAt: secondsTimestamp, ...dataPost}); //... agrega otro elemento en un mismo objeto.
+      console.log(dataPost)
     } catch (error) {
       console.log(error);
     }
   };
   
-  export { createPost, getCurrentUserPosts, getAllPosts };
-
-
+  export { createPost, getCurrentUserPosts, getAllPosts};
