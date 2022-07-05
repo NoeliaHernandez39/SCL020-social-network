@@ -52,20 +52,24 @@ getAllPosts() //trae todo los post
         postList.forEach((post) => { //trae todos los post filtrados
             getUserPostData(post.idUser)//uid especifico de cada post
         .then((users) => {
+            const date = new Date(Number(post.createdAt) * 1000).toLocaleDateString()
             const postElement = document.createElement('div'); 
             postElement.setAttribute('class', 'postBody') 
 
             postElement.innerHTML = `
                             <div class="userNav">
-                                <div class="item1">
+                                <div class="userIcon">
                                     <i class="fa-solid fa-circle-user fa-3x"></i>
                                 </div>
-                                <div class="item2">
+                                <div class="userName">
                                     <p>${users.username}</p>
                                 </div>
-                                <div class="item3">
-                                    <p>${users.userType}</p>
-                                </div>
+                                <div class="userTitle">
+                                <p>${users.userType}</p>
+                        </div>
+                        <div class="userDate">
+                            <p class="date">${date}</p>
+                        </div>
                             </div>
 
                             <div class="post">
