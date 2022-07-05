@@ -82,23 +82,24 @@ getCurrentUserPosts()
                 .then((idUser) => { 
         const date = new Date(Number(post.createdAt) * 1000).toLocaleDateString()
         const postHTML = document.createElement('div');
-        postHTML.innerHTML = `        
+        postHTML.innerHTML = `
+                    <div class='postProfile'>
                     <div class="userNav">
-                        <div class="item1">
+                        <div class="userIcon">
                             <i class="fa-solid fa-circle-user fa-3x"></i>
                         </div>
                     
-                        <div class="item2">
+                        <div class="userName">
                             <p>${idUser.username}</p>
                         </div>
                     
-                        <div class="item3">
+                        <div class="userTitle">
                             <p>${idUser.userType}</p>
+                        </div>
+                        <div class="userDate">
                             <p class="date">${date}</p>
-
                         </div>
                     </div>
-                    
                     <div class="post">
                         <h2>${post.text}</h2> 
                     </div>
@@ -109,6 +110,7 @@ getCurrentUserPosts()
                         <div class="pencilIcon">
                             <a href="#/editPost" <i class="fa-solid fa-pencil fa-2xl"></i> </a>
                         </div>
+                    </div>
                     </div>`;
 
         postBody.appendChild(postHTML);

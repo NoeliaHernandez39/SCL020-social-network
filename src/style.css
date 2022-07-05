@@ -225,11 +225,23 @@ input{
 .postBody{
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #FFD5E5;
     border-radius: 15px;
     width:73%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 300px;
+    margin-top: 35px;
+}
+
+.post h2{
+    background-color: white;
+    margin: 0;
+    padding: 22px 13px;
+}
+
+.postProfile{
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
 }
 
 .postContainer{
@@ -328,22 +340,27 @@ input{
 }
 
 .userHeader img{
-    position: fixed;
+    position: absolute;
     z-index: -1;
+    border-radius: 15px;
+    width: 73%;
+    height: 27.8%;
 }
 
 .userIcon {
-    grid-column: 1;
     grid-row: 1/span 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 160px;
 }
 
 .userName{
     grid-column: 2 /span 1;
     grid-row:  1;
+}
+
+.userName h2{
+    margin-top: 37px;
 }
 
 .userTitle {
@@ -352,6 +369,14 @@ input{
 }
 .userTitle h3 {
     margin-top: 0;
+}
+
+.userName p{
+    margin: 13px 0px 0px 0px;
+}
+
+.userTitle p{
+    margin: -21px 0px 0px 0px;
 }
 
 .createBtn{
