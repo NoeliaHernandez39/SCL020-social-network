@@ -46,14 +46,18 @@ export const createUser = () => {
             const email = divCreateUser.querySelector("#userMail_id").value;
 
             const data = {username, email, password, birthday, userType}
-            
-            if (username, birthday == '' || null || undefined){
-                alert('Debes llenar todos los campos');
+
+            if (username == '' || null || undefined){
+                alert('Debes ingresar tu nombre!');
             } else {
                 signup(data)
             }
-
-        
+            
+            if (birthday == '' || null || undefined){
+                alert('Debes ingresar tu fecha de nacimiento!');
+            } else {
+                signup(data)
+            }
         })
         
 
