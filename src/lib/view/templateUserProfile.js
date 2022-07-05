@@ -87,8 +87,7 @@ getCurrentUserPosts()
                         <div class="item1">
                             <i class="fa-solid fa-circle-user fa-3x"></i>
                         </div>
-                    
-                        <div class="item2">
+                        <div class="userName">
                             <p>${idUser.username}</p>
                         </div>
                     

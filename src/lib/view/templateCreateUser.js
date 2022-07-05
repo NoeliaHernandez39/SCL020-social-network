@@ -10,7 +10,7 @@ export const createUser = () => {
         </div>
         <div id="userCreationContainer">
             <p class="instruction">Ingresa tus datos personales</p>
-            <form action="FIREBASE??">
+            <form>
                 <div id="input-container">
                     <input type="text" name="userName" id="userName_id" placeholder="Nombre personal o de tu marca">
                     <input type="date" name="userDateOfBirth" id="dateOfBirth" placeholder="Fecha de nacimiento">
@@ -22,12 +22,12 @@ export const createUser = () => {
             <div class="radioButtons">
                 <div class="radioButtonContainer">
                     <img src="img/Baker.png" width=80px>
-                    <input type="radio" id="bakerOption_id" name="userType" value="baker" checked>
+                    <input type="radio" id="bakerOption_id" name="userType" value="Baker" checked>
                 </div>
 
                 <div class="radioButtonContainer">
                 <img src="img/eater.png" width=80px>
-                    <input type="radio" id="eaterOption_id" name="userType" value="eater">
+                    <input type="radio" id="eaterOption_id" name="userType" value="Eater">
                 </div>
             </div>
             <button class="buttons" id="newUser">Crear usuario</button>
