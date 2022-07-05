@@ -14,7 +14,7 @@ export const home = () => {
             <a href="#/userProfile" class="selected">
                 <div class="option">
                     <i class="fa-solid fa-circle-user fa-xl" title="Perfil" ></i>
-                    <h4> nombre usuario titulo</h4>
+                    <h4> Mi perfil</h4>
                 </div>
             </a>
             <a href="#/home">
@@ -29,10 +29,10 @@ export const home = () => {
                     <h4>Buscar</h4>
                 </div>
             </a>
-            <a id="logoutButton">
+            <a id= "logoutButton">
                 <div class="option">
                     <i class="fa-solid fa-arrow-right-from-bracket fa-xl" title="Cerrar sesión"></i>
-                    <h4>Cerrar cesion</h4>
+                    <h4>Cerrar sesión</h4>
                 </div>
             </a>
         </div>
