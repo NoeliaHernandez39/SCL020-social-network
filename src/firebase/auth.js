@@ -38,6 +38,9 @@ const login = async (email, password) => {
     } else if (error == 'FirebaseError: Firebase: Error (auth/wrong-password).'){
       alert ('Contraseña invalida')
     }
+    else if (error == 'FirebaseError: Firebase: Error (auth/user-not-found).'){
+      alert('Usuario no encontrado')
+    }
     throw error.message;
   }
 };
