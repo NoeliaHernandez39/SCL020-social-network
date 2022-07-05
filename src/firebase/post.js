@@ -1,8 +1,10 @@
-import { searchPost } from '../lib/view/templateSearch.js';
+//import { searchPost } from '../lib/view/templateSearch.js';
 import {
-    db, addDoc, collection, getDocs, query, where, auth, orderBy
+    db, addDoc, collection, getDocs, query, where, auth, orderBy, deleteDoc, doc
   } from './init.js';
-  
+
+  export const deletePost = id => deleteDoc(collection(db, "posts" , idUser));
+
   //Llama array con todo los post
   const getAllPosts = async () => {
     try {
@@ -17,18 +19,6 @@ import {
       console.log(err);
     }
   };
-
-  // const getName = async () =>{
-  //   try {
-  //     const user = auth.currentUser.uid;
-  //     const getCurrentUserNameQuery = query(collection(db, 'users'), where('username', '==', user));
-  //     const nameSnapshot = await getDocs(getCurrentUserNameQuery);
-  //     return nameSnapshot.data()
-  //   } catch (error) {
-  //     console.log('error getUid')
-  //   }
-  // };
-  
   //Llama array de los posts del usuario actual
   const getCurrentUserPosts = async () => {
     try {
@@ -39,6 +29,7 @@ import {
       postsSnapshot.forEach((doc) => {
         postsArray.push(doc.data());//data adjunta el array que trae postsSnapshot
       });
+      console.log(postsArray)
       return postsArray;
     } catch (error) {
       console.log(error);
@@ -51,10 +42,22 @@ import {
       const user = auth.currentUser.uid;
       const secondsTimestamp = Math.floor(Date.now() / 1000)
       await addDoc(collection(db, 'posts'), {idUser: user, createdAt: secondsTimestamp, ...dataPost}); //... agrega otro elemento en un mismo objeto.
-      console.log(dataPost)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   };
   
   export { createPost, getCurrentUserPosts, getAllPosts};
+  
+  
+  
+  // const getName = async () =>{
+  //   try {
+  //     const user = auth.currentUser.uid;
+  //     const getCurrentUserNameQuery = query(collection(db, 'users'), where('username', '==', user));
+  //     const nameSnapshot = await getDocs(getCurrentUserNameQuery);
+  //     return nameSnapshot.data()
+  //   } catch (error) {
+  //     console.log('error getUid')
+  //   }
+  // };
