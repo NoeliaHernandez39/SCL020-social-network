@@ -248,12 +248,15 @@ input{
 
 .userNav {
     display: grid;
+    height: 55px;
     grid-template-columns: 50px auto auto;
     background-color: #F34573;
     font-size: 12px;
     color: #FFFFFF;
     width: 100%;
     border-radius: 15px 15px 0px 0px
+
+    
 }
 
 .cupcakeImg{
@@ -309,15 +312,20 @@ input{
 }
 
 .userHeader{
-    background-color: #F34573;
     display: grid;
+    gap: 10px;
     border-radius: 15px;
     grid-template-columns: 165px auto auto;
     height: 181px;
     width: 73%;
-    color: white;
+    color: #F34573;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 330px
+}
+
+.userHeader img{
+    position: fixed;
+    z-index: -1;
 }
 
 .userIcon {
@@ -348,8 +356,6 @@ input{
 }
 
 .createPostFlex{
-    display: flex;
-    justify-content: space-between;
     font-size: 17px;
     margin: 20px 0px 15px 357px;
     width: 69%;

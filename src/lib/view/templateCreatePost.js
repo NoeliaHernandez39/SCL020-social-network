@@ -36,16 +36,16 @@ export const newPost = () => {
     </a>
     </div>
 </div>
-<div class="postMain">
-    <div class="userHeader">
-        <div class="item1">
+<div class="userHeader" >
+        <img src= "img/userheader4.png">
+        <div class="userIcon">
             <i class="fa-solid fa-circle-user fa-6x"></i>
         </div>
-        <div class="item2" id="nameHeader">
-            <h2>Nombre de usuario</h2>
+        <div class="userName" id="nameHeader">
+            <h2>Mi perfil</h2>
         </div>
-        <div class="item3" id="titleHeader">
-            <h3>Titulo baker o eater</h3>
+        <div class="userTitle" id="titleHeader">
+                <p>Mis Publicaciones:</p> 
         </div>
     </div>
     <div class="postBody">
