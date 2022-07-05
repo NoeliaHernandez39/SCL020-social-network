@@ -37,7 +37,6 @@ export const newPost = () => {
         </div>
     </div>
     <div class="userHeader" >
-        <img src= "img/userheader4.png">
         <div class="userIcon">
             <i class="fa-solid fa-circle-user fa-6x"></i>
         </div>
@@ -53,6 +52,8 @@ export const newPost = () => {
         </div>
         <div class="post">
             <input class="post__textarea" name="createPostInput"  id="createPostTextarea" placeholder="Escribe un texto"></input>
+        </div>
+        <div class="optionsPost">
             <div class="radioButtons">
                 <div class="radioButtonContainer">
                     <input  type="radio" id="veganOptionId" name="postType" value="vegan" checked>
@@ -60,9 +61,7 @@ export const newPost = () => {
                 </div>
                 <div class="radioButtonContainer">
                     <input type="radio" id="glutenFreeId" name="postType" value="glutenFree">
-                    <label for="glutenFreeId">
-                    Sin gluten
-                    </label>
+                    <label for="glutenFreeId">Sin gluten</label>
                 </div>
                 <div class="radioButtonContainer">
                     <input type="radio" id="sugarFreeId" name="postType" value="sugarFree">
@@ -73,8 +72,6 @@ export const newPost = () => {
                     <label for="lactoseFreeId">Sin lactosa</label>
                 </div>
             </div>
-        </div>
-        <div class="optionsPost">
             <div class="divOptionsBt">
                 <a class="buttons" id="createPost">Publicar</a>
             </div>

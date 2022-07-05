@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js';
 import {
-  getFirestore, doc, setDoc, collection, addDoc, query, where, getDocs, getDoc, orderBy
+  getFirestore, doc, setDoc, collection, addDoc, query, where, getDocs, getDoc, orderBy, deleteDoc
 } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-firestore.js';
 
 import { firebaseConfig } from './config.js';
@@ -46,5 +46,6 @@ export {
   getRedirectResult,
   GoogleAuthProvider,
   signOut,
+  deleteDoc,
   sendEmailVerification,
 };

@@ -85,7 +85,7 @@ const signup = async (data) => {
   } catch (error) {
     if (error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
       alert('Correo invalido Ej: 1234@micorreo.com')
-    } else if (error == 'FirebaseError: Password should be at least 6 characters (auth/weak-password).'){
+    } else if (error == 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).'){
       alert ('La contraseña debe tener 6 o mas caracteres')
     } else if (error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).')
       alert ('Este correo ya tiene una cuenta asociada')

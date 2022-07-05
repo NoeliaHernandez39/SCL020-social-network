@@ -1,5 +1,5 @@
 import { logout } from '../../firebase/auth.js';
-import { getCurrentUserPosts } from '../../firebase/post.js';
+import { deletePost, getCurrentUserPosts } from '../../firebase/post.js';
 import { getUserPostData } from '../../firebase/users.js';
 
 export const userProfile = () => {
@@ -60,20 +60,14 @@ const divUserProfile = document.createElement('div');
     </div>
 </div>
 `;
-  divUserProfile.innerHTML = viewUserProfile;
 
-  const btn = divUserProfile.querySelector('#logoutButton')
-  const postBody = divUserProfile.querySelector('.postBody');
+    divUserProfile.innerHTML = viewUserProfile;
 
-    // getName()
-    // .then((names) => {
-    //     names(users.username)
-    //     console.log(users)
-    //     .then((username) => {
-    //         console.log(username)
-    //     })
-    // })
-
+    const btn = divUserProfile.querySelector('#logoutButton')
+    const postBody = divUserProfile.querySelector('.postBody');
+        btn.addEventListener('click', () => {
+            logout()
+            })
 
 getCurrentUserPosts()
     .then((postsResponse) => {
@@ -109,19 +103,25 @@ getCurrentUserPosts()
                         </div>
                         <div class="pencilIcon">
                             <a href="#/editPost" <i class="fa-solid fa-pencil fa-2xl"></i> </a>
+                            <button id="btn-delete" data-id="${post.idUser}">X</button>
                         </div>
                     </div>
                     </div>`;
-
+            
+                    const deleteBtn= postBody.querySelectorAll("#btn-delete")
+                    deleteBtn.forEach(btn => {
+                        btn.addEventListener("click", async () => {
+                            const deleteConfirm = confirm("¿Are you sure you want to delete this post?");
+                            if (deleteConfirm === true) {
+                                await deletePost(btn.dataset.idUser)
+                                alert("Post has been deleted");
+                            }
+                        })
+                    });
         postBody.appendChild(postHTML);
         });
     });
-    });
-
-
-    btn.addEventListener('click', () => {
-    logout()
-    })
+});
     return divUserProfile;
 };
 
