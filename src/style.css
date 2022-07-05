@@ -485,6 +485,11 @@ input{
         display: flex;
     }
 
+    .userHeader img {
+        position: fixed;
+        width: 1%;
+        height: 1%;
+    }
     .options__menu {
         display: flex;
         top: 0px;
@@ -516,22 +521,56 @@ input{
         justify-content: center;
         align-items: center;
     }
+    .userIcon {
+        grid-row: 1/span 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }    
+
+    .userName h2 {
+        margin-top: 15px;
+        margin-bottom: 12px;
+    }
+
+    .userTitle h3 {
+        margin-top: 33px;
+    }
+
+    .postBody {
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        width: 73%;
+        margin-top: 35px;
+        margin-left: 0px;
+    }
     .postMain{
-        margin-left: 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 75%;
+        width: 100%;
+        margin: 60px 0px;
     }
+    element.style {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .userHeader{
-        background-color: #F34573;
+        background-image: url(img/userheader4.png);
         display: grid;
         border-radius: 15px;
-        grid-template-columns: 165px auto auto;
+        grid-template-columns: 128px 115px;
         height: 150px;
-        width: 85%;
-        color: white;
+        width: 86%;
+        color: #F34573;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-left: 0px;
+        gap: 0px;
+        margin-top: 26px;
+
     }
     .buttonGreen {
         border-radius: 10px;
@@ -546,6 +585,11 @@ input{
         margin: auto 0px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+    .createBtn{
+    grid-column: 2 /span 1;
+    grid-row: 2;
+    }
+
     .postContainer{
         overflow: hidden;
         display: flex;
