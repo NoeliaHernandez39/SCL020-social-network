@@ -39,7 +39,7 @@ const divUserProfile = document.createElement('div');
 </div>
 <div class="postMain">
     
-    <div class="userHeader" >
+    <div class="userHeader">
         <img src= "img/userheader4.png">
         <div class="userIcon">
             <i class="fa-solid fa-circle-user fa-6x"></i>
@@ -47,9 +47,11 @@ const divUserProfile = document.createElement('div');
         <div class="userName" id="nameHeader">
             <h2>Mi perfil</h2>
         </div>
-        <div class="userTitle" id="titleHeader">
-                <p>Mis Publicaciones:</p>
-                <a href="#/createPost" class="buttonGreen">Crea un Post</a>  
+        <div class="userTitle">
+            <h3>Mis Publicaciones:</h3>
+        </div>
+        <div class= "createBtn">
+            <a href="#/createPost" class="buttonGreen">Crea un Post</a>  
         </div>
     </div>
     

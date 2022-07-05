@@ -50,27 +50,27 @@ export const newPost = () => {
     </div>
     <div class="postBody">
         <div class="userNav">
-            <div class="userIcon">
-                <i class="fa-solid fa-circle-user fa-3x"></i>
-            </div>
-            <div class="userName">
-                <p>Nombre de usuario</p>
-            </div>
-            <div class="item3">
-                <p>Baker</p>
-            </div>
         </div>
         <div class="post">
             <input class="post__textarea" name="createPostInput"  id="createPostTextarea" placeholder="Escribe un texto"></input>
             <div class="radioButtons">
                 <div class="radioButtonContainer">
-                    <input type="radio" id="veganOptionId" name="postType" value="vegan" checked>
-                    <label for="veganOptionId">Vegan</label>
+                    <input  type="radio" id="veganOptionId" name="postType" value="vegan" checked>
+                    <labelfor="veganOptionId">Vegano</label>
                 </div>
-
                 <div class="radioButtonContainer">
-                    <input type="radio" id="fullOptionId" name="postType" value="full">
-                    <label for="fullOptionId">Full</label>
+                    <input type="radio" id="glutenFreeId" name="postType" value="glutenFree">
+                    <label for="glutenFreeId">
+                    Sin gluten
+                    </label>
+                </div>
+                <div class="radioButtonContainer">
+                    <input type="radio" id="sugarFreeId" name="postType" value="sugarFree">
+                    <label for="sugarFreeId">Sin azúcar</label>
+                </div>
+                <div class="radioButtonContainer">
+                    <input type="radio" id="lactoseFreeId" name="postType" value="lactoseFree">
+                    <label for="lactoseFreeId">Sin lactosa</label>
                 </div>
             </div>
         </div>
