@@ -79,16 +79,16 @@ const signup = async (data) => {
         userType: data?.userType
       }
     )
-
     showTemplates('#/home')
     return userCredential;
   } catch (error) {
     if (error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
-      alert('Correo invalido Ej: 1234@micorreo.com')
+      alert('Correo invalido Ej: 1234@micorreo.com.')
     } else if (error == 'FirebaseError: Firebase: Password should be at least 6 characters (auth/weak-password).'){
-      alert ('La contraseña debe tener 6 o mas caracteres')
-    } else if (error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).')
-      alert ('Este correo ya tiene una cuenta asociada')
+      alert ('La contraseña debe tener 6 o mas caracteres.')
+    } else if (error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).'){
+      alert ('Este correo ya tiene una cuenta asociada.')
+    }
     throw error.message;
   } 
 };
@@ -125,24 +125,7 @@ const logout = async () => {
 
 export { login, logout, signup, googleLogin, auth, onAuthStateChanged };
 
-//Iniciar sesion con google
 
-
-// ************************************************
-// import { showTemplates } from './../lib/router.js';
-// import {
-//   auth,
-//   onAuthStateChanged,
-//   signInWithEmailAndPassword,
-//   createUserWithEmailAndPassword,
-//   setDoc,
-//   db,
-//   doc,
-//   signOut,
-//   provider,
-//   signInWithPopup
-// } from "./init.js";
-// //import { async } from 'regenerator-runtime';
 
 
 // // Iniciar Sesión
@@ -190,20 +173,6 @@ export { login, logout, signup, googleLogin, auth, onAuthStateChanged };
 //     throw error.message;
 //   }
 // };
-// // Cerrar sesion
-// const logout = async () => {
-//   try {
-//     const response = await signOut(auth);
-//     showTemplates('#/')
-//     alert('La sesión se cerró exitosamente')
-//     return response;
-//   } catch (error) {
-//     throw error.message;
-//   }
-// };
 
-// export { login, logout, signup, googleLogin, auth, onAuthStateChanged}; /* */
-
-// //Iniciar sesion con google
 
 

@@ -1,5 +1,4 @@
 import { signup } from '../../firebase/auth.js';
-import { doc, setDoc } from '../../firebase/init.js';
 
 export const createUser = () => {
     const divCreateUser = document.createElement('div')
@@ -46,16 +45,10 @@ export const createUser = () => {
             const email = divCreateUser.querySelector("#userMail_id").value;
 
             const data = {username, email, password, birthday, userType}
-
-            if (username == '' || null || undefined){
-                alert('Debes ingresar tu nombre!');
-            } else {
-                signup(data)
-            }
             
-            if (birthday == '' || null || undefined){
-                alert('Debes ingresar tu fecha de nacimiento!');
-            } else {
+            if (!birthday || !username){
+                alert('Debes ingresar todos tus datos');
+            }else {
                 signup(data)
             }
         })
