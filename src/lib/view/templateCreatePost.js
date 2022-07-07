@@ -2,7 +2,7 @@ import { createPost } from "../../firebase/post.js";
 
 export const newPost = () => {
     const divNewPost = document.createElement('div')
-    divNewPost.setAttribute('id', 'containerNewPost')
+    divNewPost.setAttribute('class', 'postMain')
     
     const viewNewPost = `
     <div class="menu__side" id="menu_side">
@@ -54,7 +54,7 @@ export const newPost = () => {
             <input class="post__textarea" name="createPostInput"  id="createPostTextarea" placeholder="Escribe un texto"></input>
         </div>
         <div class="optionsPost">
-            <div class="radioButtons">
+            <div class="radioButtons" id="radioButtonsCreatePost">
                 <div class="radioButtonContainer">
                     <input  type="radio" id="veganOptionId" name="postType" value="vegan" checked>
                     <labelfor="veganOptionId">Vegano</label>
