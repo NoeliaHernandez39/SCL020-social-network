@@ -1,5 +1,12 @@
-// Este es el punto de entrada de tu aplicacion
+import { logInTemplate } from './lib/view/templateLogIn.js';
+import { showTemplates } from './lib/router.js';
 
-import { myFunction } from './lib/index.js';
+const init = () => {
+    document.querySelector('#root').innerHTML = logInTemplate();
+    showTemplates(window.location.hash)
+    window.addEventListener('hashchange', () => {
+        showTemplates(window.location.hash)
+    })
+}
 
-myFunction();
+window.addEventListener('load', init)
