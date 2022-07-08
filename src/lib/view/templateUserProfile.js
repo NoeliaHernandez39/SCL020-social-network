@@ -1,6 +1,7 @@
 import { logout } from '../../firebase/auth.js';
 import { deletePost, getCurrentUserPosts } from '../../firebase/post.js';
-import { getUserPostData } from '../../firebase/users.js';
+import { getUserData } from '../../firebase/users.js';
+import { showTemplates } from '../router.js';
 
 export const userProfile = () => {
 const divUserProfile = document.createElement('div');
@@ -72,8 +73,9 @@ const divUserProfile = document.createElement('div');
 getCurrentUserPosts()
     .then((postsResponse) => {
         postsResponse.forEach((post) => {
-            getUserPostData(post.idUser)
+            getUserData(post.idUser)
                 .then((idUser) => { 
+                    const postId = post.idPost;
         const date = new Date(Number(post.createdAt) * 1000).toLocaleDateString()
         const postHTML = document.createElement('div');
         postHTML.innerHTML = `
@@ -103,18 +105,21 @@ getCurrentUserPosts()
                         </div>
                         <div class="pencilIcon">
                             <a href="#/editPost" <i class="fa-solid fa-pencil fa-2xl"></i> </a>
-                            <button id="btn-delete" data-id="${post.idUser}">X</button>
+                            <button class="btn-delete" data-docid=${postId}>X</button>
                         </div>
                     </div>
                     </div>`;
             
-                    const deleteBtn= postBody.querySelectorAll("#btn-delete")
+                    const deleteBtn =postHTML.querySelectorAll(".btn-delete")
                     deleteBtn.forEach(btn => {
-                        btn.addEventListener("click", async () => {
+                        btn.addEventListener('click', async (e) => {
+                            const properties = e.target.dataset.docid;
+                            console.log(properties)
                             const deleteConfirm = confirm("¿Are you sure you want to delete this post?");
                             if (deleteConfirm === true) {
-                                await deletePost(btn.dataset.idUser)
+                                await deletePost(properties)
                                 alert("Post has been deleted");
+                                showTemplates('#/userProfile')
                             }
                         })
                     });

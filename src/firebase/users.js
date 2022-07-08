@@ -12,7 +12,7 @@ import {db, doc, /*auth,*/ getDoc} from './init.js';
   //   }
   // };
   
-  const getUserPostData = async (uid) => {
+  const getUserData = async (uid) => {
     try {
       const getUserDataDoc = doc(db, 'users', uid);
       const userDocSnapshot = await getDoc(getUserDataDoc);
@@ -22,4 +22,4 @@ import {db, doc, /*auth,*/ getDoc} from './init.js';
     }
   };
   
-  export { getUserPostData };
+  export { getUserData };

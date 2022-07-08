@@ -1,6 +1,6 @@
 import { logout } from '../../firebase/auth.js';
 import { getAllPosts } from '../../firebase/post.js';
-import { getUserPostData } from '../../firebase/users.js';
+import { getUserData } from '../../firebase/users.js';
 
 export const home = () => {
     const divHome = document.createElement('div');
@@ -50,12 +50,12 @@ const postMain = divHome.querySelector('.postMain');
 getAllPosts() //trae todo los post
     .then((postList) => {
         postList.forEach((post) => { //trae todos los post filtrados
-            getUserPostData(post.idUser)//uid especifico de cada post
+            const postId = post.idUser; //uid de usuario dentro de la coleccion user
+            getUserData(postId)//uid especifico de cada post
         .then((users) => {
             const date = new Date(Number(post.createdAt) * 1000).toLocaleDateString()
             const postElement = document.createElement('div'); 
-            postElement.setAttribute('class', 'postBody') 
-
+            postElement.setAttribute('class', 'postBody')
             postElement.innerHTML = `
                             <div class="userNav">
                                 <div class="userIcon">
@@ -73,7 +73,7 @@ getAllPosts() //trae todo los post
                             </div>
 
                             <div class="post">
-                                <h2>${post?.text}</h2> 
+                                <h2>${post.text}</h2> 
                             </div>
                             <div class="like">
                                 <div>
@@ -81,7 +81,6 @@ getAllPosts() //trae todo los post
                                 </div>
                             </div>
                         `;
-
             postMain.appendChild(postElement);
         });
     });

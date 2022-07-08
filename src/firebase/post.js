@@ -3,7 +3,7 @@ import {
     db, addDoc, collection, getDocs, query, where, auth, orderBy, deleteDoc, doc
   } from './init.js';
 
-  export const deletePost = id => deleteDoc(collection(db, "posts" , idUser));
+  export const deletePost = id => deleteDoc(doc(db, "posts" , id));
 
   //Llama array con todo los post
   const getAllPosts = async () => {
@@ -29,7 +29,6 @@ import {
       postsSnapshot.forEach((doc) => {
         postsArray.push(doc.data());//data adjunta el array que trae postsSnapshot
       });
-      console.log(postsArray)
       return postsArray;
     } catch (error) {
       console.log(error);
