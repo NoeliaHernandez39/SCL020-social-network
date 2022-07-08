@@ -4,13 +4,11 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
   signOut,
   provider,
   db,
   doc,
   setDoc,
-  signInWithRedirect,
   signInWithPopup
 } from "./init.js";
 
@@ -19,16 +17,14 @@ import {
 const login = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    // 
-    // const userData = await getUserData(userCredential.user.uid)
-    /* 
+    /*
+    const userData = await getUserData(userCredential.user.uid)
       {
         username: '',
         userType: '',
         birthday: ''
       }
-    */
-    // localStorage.setItem('userData', JSON.stringify(userData))
+    localStorage.setItem('userData', JSON.stringify(userData))*/
     alert('Sesión iniciada correctamente')
     showTemplates('#/home')
     return userCredential;
@@ -47,36 +43,23 @@ const login = async (email, password) => {
 
 // Registro de usuario
 /* 
-
 user = {
   username: 'pepito',
   birhtdaty: '20200,
   userType: 'baker',
   userPosts: [idPost1, idPost2, idPost3, ........]
 }
-
 */
-
 const signup = async (data) => {
-  /* 
-    const data  = {
-      username: 'username1', undefined,
-      email: 'username@emailg.com',
-      password: 'contraseña',
-      birthday: 2001/05/25,
-      userType: 'baker',
-      ---photoUrl: ',,,'
-    }
-  */
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, data?.email, data?.password);
-
-    const userFirestoreRegister = await setDoc(
-      doc(db, "users", userCredential.user.uid), 
+    const userFirestoreRegister = await setDoc(doc(db, "users", userCredential.user.uid), 
       { 
         username: data?.username,
         birthday: data?.birthday,
-        userType: data?.userType
+        userType: data?.userType,
+        password: data.password,
+        email: data.email
       }
     )
     showTemplates('#/home')
@@ -93,7 +76,7 @@ const signup = async (data) => {
   } 
 };
 
-
+//Inciar con google
 const googleLogin = async () => {
   try {
     const response = await signInWithPopup(auth, provider);
@@ -106,14 +89,11 @@ const googleLogin = async () => {
   }
 };
 
-
-
-
 // Cerrar sesion
 const logout = async () => {
   try {
     const response = await signOut(auth);
-    // localStorage.removeItem('userData')
+    /*localStorage.removeItem('userData')*/
     window.location = '#/'
     showTemplates('#/')
     alert('La sesión se cerró exitosamente')
@@ -124,55 +104,3 @@ const logout = async () => {
 };
 
 export { login, logout, signup, googleLogin, auth, onAuthStateChanged };
-
-
-
-
-// // Iniciar Sesión
-// const login = async (email, password) => {
-//   try {
-//     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-//     console.log(userCredential)
-//     showTemplates('#/home')
-//     return userCredential;
-//   } catch (error) {
-//     console.log(error.message)
-//     throw error.message;
-//   }
-// };
-// const signup = async (data) => {
-//   /*const data  = {username: 'username1', undefined, email: 'username@emailg.com',password: 'contraseña',birthday: 2001/05/25,userType: 'baker',---photoUrl: ',,,'}
-//   */
-//   try {
-//     const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
-//     const userFirestoreRegister = await setDoc(
-//       doc(db, "users", userCredential.user.uid), 
-//       { 
-//         username: data?.username,
-//         birthday: data?.birthday,
-//         userType: data?.userType
-//       }
-//     )
-//     showTemplates('#/home')
-//     return userCredential;
-//   } catch (error) {
-//     if (error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
-//       alert('Invalido')
-//     }
-//     throw error.message;
-//   }
-// };
-// const googleLogin = async () => {
-//   try {
-//     const response = await signInWithPopup(auth, provider);
-//     showTemplates('#/home')
-//     console.log(response);
-//     return response.user;
-//   } catch (error) {
-//     console.log(error.message)
-//     throw error.message;
-//   }
-// };
-
-
-

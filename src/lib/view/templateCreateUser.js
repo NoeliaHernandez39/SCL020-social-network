@@ -23,17 +23,14 @@ export const createUser = () => {
                     <img src="img/Baker.png" width=80px>
                     <input type="radio" id="bakerOption_id" name="userType" value="Baker" checked>
                 </div>
-
-                <div class="radioButtonContainer">
+            <div class="radioButtonContainer">
                 <img src="img/eater.png" width=80px>
                     <input type="radio" id="eaterOption_id" name="userType" value="Eater">
                 </div>
             </div>
             <button class="buttons" id="newUser">Crear usuario</button>
-            </div>
         </div>
-        `
-        
+        `;
     
         divCreateUser.innerHTML = viewCreateUser;
         const btn = divCreateUser.querySelector("#newUser")
@@ -43,7 +40,6 @@ export const createUser = () => {
             const birthday = divCreateUser.querySelector("#dateOfBirth").value
             const userType = divCreateUser.querySelector('input[name="userType"]:checked').value;
             const email = divCreateUser.querySelector("#userMail_id").value;
-
             const data = {username, email, password, birthday, userType}
             
             if (!birthday || !username){
@@ -53,7 +49,6 @@ export const createUser = () => {
             }
         })
         
-
     return divCreateUser;
 };
 

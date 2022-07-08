@@ -100,35 +100,5 @@ createPostButton.addEventListener('click', () => {
     }
 })
 
-return divNewPost;
+    return divNewPost;
 };
-
-
-
-///////////////////////
-// divProfile.innerHTML = viewProfile;
-
-// const formPost = divProfile.querySelector(".formPost");
-// const taskContainer = divProfile.querySelector("#feed-post");
-
-
-// formPost.addEventListener("submit", async(e) => {
-//     e.preventDefault();
-//     // console.log("submit");
-//     const contentPost = formPost["inputForm"].value;
-//     saveTask(contentPost);
-//     formPost.reset(); 
-// }
-//const createPostButton = divNewPost.querySelector('#login')
-// const textarea = divNewPost.querySelector('#createPostTextarea')
-
-// createPostButton.addEventListener('click', () => {
-//     // const postType = divNewPost.querySelector('input[name="postType"]:checked').value;
-//     const postType = divNewPost.querySelector('.b:checked').value;
-//     const dataPost = {
-//         text: textarea.value,
-//         postType: postType
-//     }
-
-//     createPost(dataPost)
-// })

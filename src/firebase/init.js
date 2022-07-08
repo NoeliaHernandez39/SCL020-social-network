@@ -10,10 +10,8 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signInWithRedirect,
-  getRedirectResult,
   GoogleAuthProvider,
   signOut,
-  sendEmailVerification,
   signInWithPopup,
 } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js';
 
@@ -43,9 +41,7 @@ export {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signInWithRedirect,
-  getRedirectResult,
   GoogleAuthProvider,
   signOut,
   deleteDoc,
-  sendEmailVerification,
 };

@@ -1,20 +1,8 @@
-import {db, doc, /*auth,*/ getDoc} from './init.js';
-  
-  // const getUserData = async () => {
-  //   try {
-  //     const user = auth.currentUser;
-  //     const getUserDataDoc = doc(db, 'users', user.uid);
-  //     const userDocSnapshot = await getDoc(getUserDataDoc);
-  // console.log (getUserDataDoc)
-  //     return userDocSnapshot.data();
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+import {db, doc, getDoc} from './init.js';
   
   const getUserData = async (uid) => {
     try {
-      const getUserDataDoc = doc(db, 'users', uid);
+      const getUserDataDoc = doc(db, 'users', uid);//trae propiedades dentro de la collection users
       const userDocSnapshot = await getDoc(getUserDataDoc);
       return userDocSnapshot.data(); //data from firebase/collection/users/ANYid)
     } catch (err) {

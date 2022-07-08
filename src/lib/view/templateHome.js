@@ -38,56 +38,55 @@ export const home = () => {
         </div>
     </div>
     <div class="postMain">
-
     </div>
-</div>
 `;
+
 divHome.innerHTML = viewHome;
-const btn = divHome.querySelector('#logoutButton');
+const btnLogout = divHome.querySelector('#logoutButton');
 const postMain = divHome.querySelector('.postMain');
 
-
-getAllPosts() //trae todo los post
-    .then((postList) => {
-        postList.forEach((post) => { //trae todos los post filtrados
-            const postId = post.idUser; //uid de usuario dentro de la coleccion user
-            getUserData(postId)//uid especifico de cada post
+getAllPosts()
+.then((postList) => {
+    console.log(postList)
+    postList.forEach((post) => {
+        const postId = post.idUser; //uid(is it a file?) de usuario dentro de la coleccion user
+        console.log(postId)
+        getUserData(postId)//en base al uid especifico de cada post
         .then((users) => {
             const date = new Date(Number(post.createdAt) * 1000).toLocaleDateString()
             const postElement = document.createElement('div'); 
             postElement.setAttribute('class', 'postBody')
             postElement.innerHTML = `
-                            <div class="userNav">
-                                <div class="userIcon">
-                                    <i class="fa-solid fa-circle-user fa-3x"></i>
-                                </div>
-                                <div class="userName">
-                                    <p>${users.username}</p>
-                                </div>
-                                <div class="userTitle">
-                                <p>${users.userType}</p>
-                        </div>
-                        <div class="userDate">
-                            <p class="date">${date}</p>
-                        </div>
-                            </div>
-
-                            <div class="post">
-                                <h2>${post.text}</h2> 
-                            </div>
-                            <div class="like">
-                                <div>
-                                    <img src="img/cuplike.png" class ="cupcakeImg" alt="cuplike">
-                                </div>
-                            </div>
-                        `;
+                <div class="userNav">
+                    <div class="userIcon">
+                        <i class="fa-solid fa-circle-user fa-3x"></i>
+                    </div>
+                    <div class="userName">
+                        <p>${users.username}</p>
+                    </div>
+                    <div class="userTitle">
+                        <p>${users.userType}</p>
+                    </div>
+                    <div class="userDate">
+                        <p class="date">${date}</p>
+                    </div>
+                </div>
+                <div class="post">
+                    <h2>${post.text}</h2> 
+                </div>
+                <div class="like">
+                    <div>
+                        <img src="img/cuplike.png" class ="cupcakeImg" alt="cuplike">
+                    </div>
+                </div>
+                `;
             postMain.appendChild(postElement);
         });
     });
 });
 
     // ASOCIAMOS EL BOTON DE CERRAR SESION CON LA FUNCION DE LOGOUT
-btn.addEventListener('click', () => {
+btnLogout.addEventListener('click', () => {
     logout();
 });
 return divHome;

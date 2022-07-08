@@ -34,13 +34,12 @@ export const logInTemplate = () => {
             <a href="#/createNewUser"<button>Regístrate</button></a>
         </div>
     </div>
-    `
+    `;
     divLogIn.innerHTML = viewLogIn;
-    const btn = divLogIn.querySelector("#login")
-    btn.addEventListener("click", () => {
+    const btnlogin = divLogIn.querySelector("#login")
+    btnlogin.addEventListener("click", () => {
         const email = divLogIn.querySelector("#email").value;
         const password = divLogIn.querySelector("#password").value;
-
         login(email, password);
     })
 
@@ -48,7 +47,6 @@ export const logInTemplate = () => {
     btnGoogle.addEventListener("click", () => {
         googleLogin();
     })
-
     return divLogIn;
 };
 

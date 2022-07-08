@@ -6,7 +6,7 @@ import { userProfile } from './view/templateUserProfile.js';
 import { searchPost } from './view/templateSearch.js';
 import { editPost } from './view/templateEditPost.js';
 import { newPost } from './view/templateCreatePost.js';
-import { auth, onAuthStateChanged, logout } from '../firebase/auth.js';
+import { auth, onAuthStateChanged} from '../firebase/auth.js';
 
 export const showTemplates = (hash) => {
   const containerRoot = document.querySelector('#root');
@@ -17,7 +17,6 @@ export const showTemplates = (hash) => {
       containerRoot.appendChild(createUser());
       return;
     }
-
     if (!user) {
       containerRoot.appendChild(logInTemplate());
     } else {
